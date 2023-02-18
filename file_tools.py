@@ -99,11 +99,28 @@ def list_dir():  # вывод только папок, которые наход
     path = os.getcwd()
     folders = sorted([dirs for dirs in os.listdir(path) if os.path.isdir(dirs)])
     print(path, ' ==>', *folders, sep='\n')
-    return
+    return folders
+
+
+def list_to_sep_str(my_list):
+    delim = ", "
+    temp = list(map(str, my_list))
+    my_txt = delim.join(temp)
+    return my_txt
+
+
+def save_dir():
+    all_files = list_to_sep_str(list_files())
+    all_dirs = list_to_sep_str(list_dir())
+    files_dirs = f'files: {all_files}\ndirs: {all_dirs}\n'
+    f_name = 'listdir.txt'
+    with open(f_name, 'w') as f:
+        f.write(files_dirs)
+    return files_dirs
 
 
 def list_files():  # вывод только файлов, которые находятся в рабочей папке
     path = os.getcwd()
     only_files = sorted([files for files in os.listdir(path) if os.path.isfile(files)])
     print(path, ' ==>', *only_files, sep='\n')
-    return
+    return only_files
