@@ -2,6 +2,7 @@
 from bank_account import my_bank
 from file_tools import *
 
+
 menu = {'21': 'создать папку',
         '22': 'удалить (файл/папку)',
         '23': 'копировать (файл/папку)',
