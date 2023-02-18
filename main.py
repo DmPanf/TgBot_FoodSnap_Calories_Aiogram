@@ -1,5 +1,5 @@
 # Main Menu
-from personal_bank import my_bank
+from bank_account import my_bank
 from file_tools import *
 
 
@@ -14,9 +14,6 @@ menu = {'21': 'создать папку',
         '32': 'мой банковский счет',
         '00': 'выход.'
         }
-
-def save_dir():
-    pass
 
 
 def stop_menu():
@@ -57,8 +54,10 @@ def start_menu(ask=True):
                 list_files()
             elif item == "27":
                 change_dir(input('\nВведите новую рабочую директорию: '))
-            elif item == "27":
-                save_dir()  
+            elif item == "28":
+                files_dirs = save_dir()
+                print('\n\n')
+                print(files_dirs)
             elif item == "32":
                 my_bank()
             else:
