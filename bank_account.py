@@ -4,19 +4,19 @@ user_bank = 0.
 user_purchase = {}
 
 
+# Программа "Личный счет"
+
 def choice_menu():  # menu
-    global yes_no
     my_menu = {'1': 'пополнение счета', '2': 'покупка', '3': 'история покупок', '4': 'баланс', '5': 'средний чек', '0': 'выход'}
     print('.' * 21)
     for key, val in my_menu.items():
         print(f'{key}. {val}')
     print('.' * 21)
     to_do = input('Выберите пункт меню: ')
-    return yes_no, to_do
+    return to_do
 
 
-def bank_account():  # 1. пополнение счета
-    global user_bank
+def bank_account(user_bank):  # 1. пополнение счета
     try:
         new_sum = float(input('Введите сумму для пополнения счета: '))
         if new_sum >= 10:
@@ -25,11 +25,10 @@ def bank_account():  # 1. пополнение счета
             print('Сумма должна быть не менее 10 ..\n')
     except:
         print('Ошибка ввода суммы!')
+    return user_bank
 
 
-def make_purchase():  # 2. покупка
-    global user_bank
-    global user_purchase
+def make_purchase(user_bank, user_purchase):  # 2. покупка
     try:
         purchase_sum = float(input('Ввведите сумму покупки: '))
         if purchase_sum < 10:
@@ -42,44 +41,57 @@ def make_purchase():  # 2. покупка
             print('Денег не хватает!')
     except:
         print('Ошибка ввода суммы!')
+    return user_bank, user_purchase
 
 
-def user_histroy():  # 3. история покупок
+def user_history(user_bank, user_purchase):  # 3. история покупок
     if len(user_purchase) > 0:
         for key, val in user_purchase.items():
             print(f' - Стоимость {key} = {val}')
         print('Сделано покупок: ', len(user_purchase))
-        average_check()
-        bank_balance()
+        average_check(user_purchase)
+        bank_balance(user_bank)
         print()
     else:
         print('Еще не было покупок!')
 
 
-def bank_balance():  # 4. баланс
-    print('💰 Остаток на счету:', user_bank)
+def bank_balance(user_bank):  # 4. баланс
+    info = f'💰 Остаток на счету: {user_bank}'
+    print(info)
+    return info
 
 
-def average_check():  # 5. средний чек
+def average_check(user_purchase):  # 5. средний чек
     if len(user_purchase) > 0:
-        print('🛒 Средний чек = ', round(sum(user_purchase.values()) / len(user_purchase), 1))
+        info = f'🛒Средний чек = {round(sum(user_purchase.values()) / len(user_purchase), 1)}'
     else:
-        print('Еще не было покупок!')
+        info = 'Еще не было покупок!'
+    print(info)
+    return info
 
 
-while yes_no:
-    yes_no, choice = choice_menu()
-    if choice == '1':
-        bank_account()
-    elif choice == '2':
-        make_purchase()
-    elif choice == '3':
-        user_histroy()
-    elif choice == '4':
-        bank_balance()
-    elif choice == '5':
-        average_check()
-    elif choice == '0':
-        yes_no = False
-    else:
-        print('Неверный пункт меню\n')
+def my_bank():
+    yes_no = True
+    user_bank = 0.
+    user_purchase = {}
+    while yes_no:
+        choice = choice_menu()
+        if choice == '1':
+            user_bank = bank_account(user_bank)
+        elif choice == '2':
+            user_bank, user_purchase = make_purchase(user_bank, user_purchase)
+        elif choice == '3':
+            user_histroy(user_bank, user_purchase)
+        elif choice == '4':
+            bank_balance(user_bank)
+        elif choice == '5':
+            average_check(user_purchase)
+        elif choice == '0':
+            yes_no = False
+        else:
+            print('Неверный пункт меню\n')
+
+            
+if __name__ == '__bank_account__':
+    my_bank()
