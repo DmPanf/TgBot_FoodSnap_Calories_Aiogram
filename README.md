@@ -1,37 +1,58 @@
-# Python_P.L07
-**Работа с файлами. Кодировки, сериализация данных, json**
+# 🍽️ FoodSnap Calories
+
+AI-powered project for food recognition, portion weight estimation, and calorie calculation from photos.
 
 ---
-## **ЗАДАНИЕ 1**
-1. В подпрограмме Мой банковский счет;
-2. Добавить сохранение суммы счета в файл. 
- 
-При первом открытии программы на счету 0
-После того как мы воспользовались программой и вышли сохранить сумму счета 
-При следующем открытии программы прочитать сумму счета, которую сохранили
-...
 
-3. Добавить сохранение истории покупок в файл
- 
-При первом открытии программы истории нет.
-После того как мы что нибудь купили и закрыли программу сохранить историю покупок.
-При следующем открытии программы прочитать историю и новые покупки уже добавлять к ней;
-...
+## 🚀 Roadmap
 
-4. Формат сохранения количество файлов и способ можно выбрать самостоятельно.
+### ✅ Phase 1: Foundation
+- [x] Collect food images (homemade meals, canteen plates, restaurant dishes)
+- [x] Build dataset with approximate weights & calories
+- [x] Implement baseline calorie calculator
 
---- 
-## **ЗАДАНИЕ 2**
-5. В программе консольный файловый менеджер есть пункт "просмотр содержимого рабочей директории";
-6. Добавить пункт "сохранить содержимое рабочей директории в файл";
- 
-7. При выборе этого пункта создать файл listdir.txt (если он есть то пересоздать) и сохранить туда содержимое рабочей директории следующим образом: сначала все файлы, потом все папки, пример как может выглядеть итоговый файл.
- 
- 
-files: victory.py, bill.py, main.py
-dirs: modules, packages
- 
+### 🔍 Phase 2: Core Features
+- [ ] Image preprocessing & segmentation (detect plates, food regions)
+- [ ] Ingredient recognition (CV models + food databases)
+- [ ] Portion size estimation (heuristics + reference objects)
+- [ ] Calorie calculation per dish
+
+### 📊 Phase 3: User Features
+- [ ] Web UI (upload photo → get report)
+- [ ] Daily food diary with nutrition summaries
+- [ ] Export reports (PDF/CSV/JSON)
+- [ ] Mobile support (PWA or native app)
+
+### 🤖 Phase 4: AI Improvements
+- [ ] Fine-tune vision models for food categories
+- [ ] Add depth/scale estimation for better portion accuracy
+- [ ] Contextual calorie adjustment (fried/boiled/with sauce)
+
+### 🌍 Phase 5: Ecosystem
+- [ ] Multi-language support
+- [ ] Integration with wearables (Fitbit, Garmin, Apple Health)
+- [ ] Personalized nutrition advice
+- [ ] Gamification (streaks, challenges, progress)
+
 ---
-## **ДОПОЛНИТЕЛЬНО:**
-Написать тесты для всех новых функций в проекте.
-8. Создать pull request на объединение веток master и новой ветки, прислать ссылку на pull request как решение дз".
+
+## 🛠️ Tech Stack (planned)
+- Python, PyTorch
+- YOLO / Segment Anything for food detection
+- Nutrition DB (USDA / OpenFoodFacts)
+- FastAPI + Gradio for demo
+- React/Tailwind for frontend
+- Docker for deployment
+
+---
+
+## 📅 Timeline
+- **Month 1–2** → Dataset & baseline model
+- **Month 3–4** → Core features (detection + calories)
+- **Month 5–6** → Web/mobile MVP
+- **Month 7+** → AI improvements & integrations
+
+---
+
+## 📌 Goal
+Make nutrition tracking effortless by just **snapping a photo** 📸 → get **calories, macros, and health insights** instantly.
